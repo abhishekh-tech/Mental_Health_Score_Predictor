@@ -1,5 +1,5 @@
 // Update this URL if your FastAPI server runs on a different host or port
-const API_BASE = "https://mental-health-score-predictor-atct.onrender.com";
+const API_URL = "https://mental-health-score-predictor-atct.onrender.com";
 
 const form = document.getElementById("prediction-form");
 const submitBtn = document.getElementById("submit-btn");
