@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Mental Health Predictor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Student Mental Health Score Predictor</h1>
+        <p>
+          Enter daily habits, academic details, and social media usage to
+          estimate a mental health score.
+        </p>
+      </header>
+
+      <form id="prediction-form">
+        <!-- Demographics & Academics -->
+        <fieldset>
+          <legend>Demographics & Academics</legend>
+          <div class="grid">
+            <div class="form-group">
+              <label for="age">Age (10 - 100)</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="10"
+                max="100"
+                value="21"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                list="top-countries"
+                placeholder="e.g. USA, India, Nepal..."
+                value="USA"
+                required
+              />
+              <datalist id="top-countries">
+                <option value="USA"></option>
+                <option value="India"></option>
+                <option value="Canada"></option>
+                <option value="Australia"></option>
+                <option value="UK"></option>
+                <option value="Germany"></option>
+                <option value="Mexico"></option>
+                <option value="Turkey"></option>
+                <option value="France"></option>
+                <option value="Other"></option>
+              </datalist>
+            </div>
+
+            <div class="form-group">
+              <label for="academic_level">Academic Level</label>
+              <select id="academic_level" name="academic_level" required>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+                <option value="High School">High School</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Social Media Habits -->
+        <fieldset>
+          <legend>Digital & Social Media Habits</legend>
+          <div class="grid">
+            <div class="form-group">
+              <label for="most_used_platform">Most Used Platform</label>
+              <select
+                id="most_used_platform"
+                name="most_used_platform"
+                required
+              >
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Facebook">Facebook</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Twitter">Twitter</option>
+                <option value="Snapchat">Snapchat</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="WeChat">WeChat</option>
+                <option value="LINE">LINE</option>
+                <option value="KakaoTalk">KakaoTalk</option>
+                <option value="VKontakte">VKontakte</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="purpose_of_use">Primary Purpose of Use</label>
+              <select id="purpose_of_use" name="purpose_of_use" required>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Education">Education</option>
+                <option value="Networking">Networking</option>
+                <option value="News">News</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="avg_daily_usage_hours">Avg Daily Usage (Hours)</label>
+              <input
+                type="number"
+                id="avg_daily_usage_hours"
+                name="avg_daily_usage_hours"
+                min="0"
+                max="24"
+                step="0.1"
+                value="3.5"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="daily_unlocks">Daily Phone Unlocks</label>
+              <input
+                type="number"
+                id="daily_unlocks"
+                name="daily_unlocks"
+                min="0"
+                step="1"
+                value="65"
+                required
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Lifestyle & Wellbeing -->
+        <fieldset>
+          <legend>Daily Routine & Stress</legend>
+          <div class="grid">
+            <div class="form-group">
+              <label for="study_hours">Study Hours / Day</label>
+              <input
+                type="number"
+                id="study_hours"
+                name="study_hours"
+                min="0"
+                max="24"
+                step="0.1"
+                value="4.0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="physical_activity_hours"
+                >Physical Activity (Hours / Day)</label
+              >
+              <input
+                type="number"
+                id="physical_activity_hours"
+                name="physical_activity_hours"
+                min="0"
+                max="24"
+                step="0.1"
+                value="1.0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sleep_hours_per_night">Sleep Hours / Night</label>
+              <input
+                type="number"
+                id="sleep_hours_per_night"
+                name="sleep_hours_per_night"
+                min="0"
+                max="24"
+                step="0.1"
+                value="7.0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="stress_level">Perceived Stress Level</label>
+              <select id="stress_level" name="stress_level" required>
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+                <option value="Very High">Very High</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" id="submit-btn">
+            Predict Mental Health Score
+          </button>
+        </div>
+      </form>
+
+      <!-- Result & Error Displays -->
+      <div id="result-card" class="result-card hidden" aria-live="polite">
+        <h2>Predicted Mental Health Score</h2>
+        <div class="score-display">
+          <span id="score-value">--</span>
+        </div>
+        <p id="score-context" class="score-context"></p>
+      </div>
+
+      <div id="error-box" class="error-box hidden" role="alert"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
